@@ -8,7 +8,9 @@ import { expoScene } from "./scenes/expoScene";
 const game = new Engine({
   width: 1200,
   height: 800,
-  canvasElementId: "jogo"
+  //otimizacao para pixelart
+  canvasElementId: "jogo",
+  pixelArt: true
 })
 game.addScene("bemVindo", new welcomeScene())
 game.addScene("historia", new historyScene())
