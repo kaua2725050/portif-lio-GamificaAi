@@ -1,6 +1,7 @@
 import { Actor, CollisionType, Color, Engine, FadeInOut, Scene, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 import { Player } from "../actors/player";
+import { Npc } from "../actors/npcs";
 
 export class expoScene extends Scene {
     onTransition(direction: "in" | "out"): Transition | undefined {
@@ -12,6 +13,9 @@ export class expoScene extends Scene {
     }
 
     onInitialize(engine: Engine<any>): void {
+    //ativar o modo debug
+    engine.toggleDebug()
+
         let tiledMap = Resources.Mapa
 
         //definir offset para renderizacao do mapa
@@ -25,14 +29,50 @@ export class expoScene extends Scene {
         //definir zoom da camera para aumentar um pouco a vizualizacao da cena
         this.camera.zoom = 1.4
 
+        //carregar spawn point do player
+        let spawnPoint = tiledMap.getObjectsByName("spawnPoint")[0]
+        
         //definicao e configuracao do player
-        let Tadinho = new Player()
+        let Tadinho = new Player(vec(spawnPoint.x + offsetX, spawnPoint.y + offsetY))
 
         //z index define a camada do player
         Tadinho.z = 1
 
         //adicionar player na cena
         this.add(Tadinho)
+
+        //pegar spawn point com cada objeto
+        let npcSpawnPointA = tiledMap.getObjectsByName("npc_a")[0]
+        let npcSpawnPointB = tiledMap.getObjectsByName("npc_b")[0]
+        let npcSpawnPointC = tiledMap.getObjectsByName("npc_c")[0]
+
+        //configurar npcs
+        let npcA = new Npc(
+            vec(npcSpawnPointA.x + offsetX, npcSpawnPointA.y + offsetY),
+            Color.Blue,
+            "NpcA"
+        )
+
+        let npcB = new Npc(
+            vec(npcSpawnPointB.x + offsetX, npcSpawnPointB.y + offsetY),
+            Color.Chartreuse,
+            "NpcB"
+        )
+
+        let npcC = new Npc(
+            vec(npcSpawnPointC.x + offsetX, npcSpawnPointC.y + offsetY),
+            Color.Yellow,
+            "NpcC"
+        )
+
+        //adicionar os npcs
+        this.add(npcA)
+        this.add(npcB)
+        this.add(npcC)
+
+        //focar a camera no player
+        this.camera.strategy.lockToActor(Tadinho)
+        this.camera.zoom = 2
 
         //adicionar colisao com cada objeto
         //pegar a camada de objetos colisores

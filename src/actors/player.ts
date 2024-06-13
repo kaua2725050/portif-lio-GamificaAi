@@ -1,4 +1,5 @@
-import { Actor, CollisionType, Color, Engine, Keys, vec } from "excalibur";
+import { Actor, Animation, CollisionType, Color, Engine, Keys, SpriteSheet, Vector, vec } from "excalibur";
+import { Resources } from "../resources";
 
 export class Player extends Actor {
     //propriedade do player
@@ -6,9 +7,9 @@ export class Player extends Actor {
 
 
     //configuracao do player
-    constructor () {
+    constructor (posicao: Vector) {
         super({
-            pos: vec(600, 520),
+            pos: posicao,
             width: 32,
             height: 32,
             name:"Tadinho",
@@ -18,6 +19,41 @@ export class Player extends Actor {
     }
 
     onInitialize(engine: Engine<any>): void {
+    //configurar sprite do player
+    const PlayerSpriteSheet = SpriteSheet.fromImageSource({
+        image: Resources.PlayerSpriteSheet,
+        grid: {
+            spriteWidth: 32,
+            spriteHeight: 64,
+            columns: 56,
+            rows: 20
+        },
+        spacing: {
+            originOffset: {
+                y: 8
+            }
+        }
+    })
+
+    //criar as animacoes
+    const duracaoFramesAnimacao = 70
+    //animacao idle
+    const leftIdle = new Animation({
+        frames: [
+            { graphic: PlayerSpriteSheet.getSprite(12, 1)},
+            { graphic: PlayerSpriteSheet.getSprite(13, 1)},
+            { graphic: PlayerSpriteSheet.getSprite(14, 1)},
+            { graphic: PlayerSpriteSheet.getSprite(15, 1)},
+            { graphic: PlayerSpriteSheet.getSprite(16, 1)},
+            { graphic: PlayerSpriteSheet.getSprite(17, 1)}
+        ],
+        frameDuration: 70
+    })
+    this.graphics.add("left-idle", leftIdle)
+
+    this.graphics.use("left-idle")
+
+
         //configurar player para minitorar eventos no teclado
         engine.input.keyboard.on("hold", (event) => {
             //detectar qual a tecla pressionada
@@ -78,9 +114,5 @@ export class Player extends Actor {
                 this.vel.y = 0
             }
         })
-    }
-
-
-
-
+    }    
 }
