@@ -141,7 +141,7 @@
  <objectgroup id="8" name="objetos colisores">
   <object id="3" name="mesa_tenis" x="687.273" y="392.424" width="63.2727" height="86.8485"/>
   <object id="6" name="computador" x="585.5" y="242.409" width="44.25" height="45.2727"/>
-  <object id="7" name="mesa_stand" x="648.573" y="242" width="77.3303" height="39.7955"/>
+  <object id="7" name="mesa_stand_c" x="648.573" y="242" width="77.3303" height="39.7955"/>
   <object id="8" name="criado_mudo" x="736.005" y="241.673" width="33.1727" height="38.0507"/>
   <object id="9" name="computador" x="361.625" y="241" width="44.25" height="46.7273"/>
   <object id="10" name="mesa_stand_a" x="202.125" y="242.375" width="75.5" height="39.25"/>

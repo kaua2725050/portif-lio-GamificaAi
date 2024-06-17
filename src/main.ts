@@ -4,6 +4,7 @@ import { loader } from "./resources";
 import { historyScene } from "./scenes/historyScene";
 import { gamificationScene } from "./scenes/gamificationScene";
 import { expoScene } from "./scenes/expoScene";
+import { caseScene } from "./scenes/caseScene";
 
 const game = new Engine({
   width: 1200,
@@ -16,6 +17,7 @@ game.addScene("bemVindo", new welcomeScene())
 game.addScene("historia", new historyScene())
 game.addScene("gamificado", new gamificationScene())
 game.addScene("exposicao", expoScene)
+game.addScene("case", caseScene)
 
 game.start(loader).then(() => {
   game.goToScene("historia", {

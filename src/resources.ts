@@ -3,7 +3,8 @@ import sword from "./images/sword.png";
 import { TiledResource } from "@excaliburjs/plugin-tiled";
 import logo from "./images/logo.png";
 import logoVertical from "./images/logo-vertical.png";
-import controle from "./images/controle.png"
+import controle from "./images/controle.png";
+import aldeao from "./images/aldeao.jpg";
 
 import pngTilesetPath from "./maps/Room_Builder_32x32.png?url"
 
@@ -23,6 +24,7 @@ export const Resources = {
   PlayerSpriteSheet: new ImageSource(playerSpritePath, {filltering: ImageFiltering.Pixel }),
   LogoVertical: new ImageSource (logoVertical),
   Controle: new ImageSource (controle),
+  Aldeao: new ImageSource (aldeao),
   Mapa: new TiledResource(tmxMapaPath, {
     pathMap: [
       {path: "mapa.tmx", output: tmxMapaPath},

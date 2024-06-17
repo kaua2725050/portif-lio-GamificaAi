@@ -9,7 +9,6 @@ export class Player extends Actor {
     private temObjetoProximo: boolean = false
     private ultimoColisor?: Collider
 
-
     //configuracao do player
     constructor (posicao: Vector) {
         super({
@@ -83,7 +82,7 @@ export class Player extends Actor {
         ],
         frameDuration: duracaoFramesAnimacao
     })
-    this.graphics.add("down-idle", upIdle)
+    this.graphics.add("up-idle", upIdle)
 
     //down idle
     const downIdle = new Animation({
@@ -97,7 +96,7 @@ export class Player extends Actor {
         ],
         frameDuration: duracaoFramesAnimacao
     })
-    this.graphics.add("up-idle", upIdle)
+    this.graphics.add("down-idle", downIdle)
 
     //definir animacao inicial do player
     this.graphics.use(downIdle)
@@ -219,6 +218,7 @@ export class Player extends Actor {
             }
         })
 
+    
         //configurar para monitorar o evento release -> soltar a tecla
         engine.input.keyboard.on("release", (event) => {
             //fazer o player parar ao soltar as teclas
@@ -249,6 +249,52 @@ export class Player extends Actor {
                 this.graphics.use(this.ultimaDirecao + "-idle")
             }
         })
+
+        //configurar o player para monitorar evento press
+    engine.input.keyboard.on("press", (event) => {
+        //se a tecla pressionada for f e tiver objeto proximo
+        if (event.key == Keys.F && this.temObjetoProximo) {
+
+            //identificar o alvo da interacao
+            if (this.ultimoColisor?.owner.name == "mesa_stand_a") {
+                console.log("essa e a mesa A");
+
+                //vai para a cena passando qual o(""bjeto da interacao
+                engine.goToScene("case", {
+                    sceneActivationData: {
+                        //passa o nome do ator para a outra cena
+                        nomeDoAtor: this.ultimoColisor.owner.name
+                    }
+                })
+            }
+
+            if (this.ultimoColisor?.owner.name == "mesa_stand_b") {
+                console.log("essa e a mesa B");
+
+                //vai para a cena passando qual o(""bjeto da interacao
+                engine.goToScene("case", {
+                    sceneActivationData: {
+                        //passa o nome do ator para a outra cena
+                        nomeDoAtor: this.ultimoColisor.owner.name
+                    }
+                })
+            }
+
+            if (this.ultimoColisor?.owner.name == "mesa_stand_c") {
+                console.log("essa e a mesa C");
+
+                //vai para a cena passando qual o(""bjeto da interacao
+                engine.goToScene("case", {
+                    sceneActivationData: {
+                        //passa o nome do ator para a outra cena
+                        nomeDoAtor: this.ultimoColisor.owner.name
+                    }
+                })
+            }
+        
+        }
+    })
+
     } 
     
     onPreCollisionResolve(self: Collider, other: Collider, side: Side, contact: CollisionContact): void {
