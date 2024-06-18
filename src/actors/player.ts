@@ -24,7 +24,7 @@ export class Player extends Actor {
     onInitialize(engine: Engine<any>): void {
     //configurar sprite do player
     const PlayerSpriteSheet = SpriteSheet.fromImageSource({
-        image: Resources.PlayerSpriteSheet,
+        image: Resources.playerSpriteSheet,
         grid: {
             spriteWidth: 32,
             spriteHeight: 64,

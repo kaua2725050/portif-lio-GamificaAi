@@ -1,10 +1,13 @@
-import { ImageFiltering, ImageSource, Loader } from "excalibur";
+import { ImageFiltering, ImageSource, Loader, Sound } from "excalibur";
 import sword from "./images/sword.png";
 import { TiledResource } from "@excaliburjs/plugin-tiled";
 import logo from "./images/logo.png";
 import logoVertical from "./images/logo-vertical.png";
 import controle from "./images/controle.png";
 import aldeao from "./images/aldeao.jpg";
+import aldeao2 from "./images/aldeao2.webp";
+import villager3 from "./images/villager3.jpg";
+import ritmadazelda from "./sounds/ritmada_zelda.mp3"
 
 import pngTilesetPath from "./maps/Room_Builder_32x32.png?url"
 
@@ -21,10 +24,13 @@ import tmxMapaPath from "./maps/mapa.tmx?url"
 export const Resources = {
   Sword: new ImageSource(sword),
   Logo: new ImageSource(logo),
-  PlayerSpriteSheet: new ImageSource(playerSpritePath, {filltering: ImageFiltering.Pixel }),
+  playerSpriteSheet: new ImageSource(playerSpritePath, {filltering: ImageFiltering.Pixel }),
   LogoVertical: new ImageSource (logoVertical),
   Controle: new ImageSource (controle),
   Aldeao: new ImageSource (aldeao),
+  aldeao2: new ImageSource (aldeao2),
+  villager3: new ImageSource (villager3),
+  ritmadazelda: new Sound (ritmadazelda),
   Mapa: new TiledResource(tmxMapaPath, {
     pathMap: [
       {path: "mapa.tmx", output: tmxMapaPath},
