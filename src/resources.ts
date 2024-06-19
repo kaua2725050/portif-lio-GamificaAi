@@ -20,6 +20,10 @@ import playerSpritePath from "./sprites/Unnamed Character.png"
 
 import tmxMapaPath from "./maps/mapa.tmx?url"
 
+import logofast from "./images/fastmart.png"
+import logoXYZ from "./images/logoxyz.png"
+import logoABC from "./images/logoabcfinance.png"
+
 
 export const Resources = {
   Sword: new ImageSource(sword),

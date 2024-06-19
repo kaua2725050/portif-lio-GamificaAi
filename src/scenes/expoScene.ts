@@ -21,7 +21,7 @@ export class expoScene extends Scene {
 
     //configurar eexecutar a musica
     musicaFundo.loop = true
-    musicaFundo.play(9)
+    musicaFundo.play(1)
 
         let tiledMap = Resources.Mapa
 

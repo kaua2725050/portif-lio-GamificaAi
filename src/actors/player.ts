@@ -3,7 +3,7 @@ import { Resources } from "../resources";
 
 export class Player extends Actor {
     //propriedade do player
-    private velocidade: number = 120
+    private velocidade: number = 180
     private ultimaDirecao: string = "down"
 
     private temObjetoProximo: boolean = false
