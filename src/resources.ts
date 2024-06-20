@@ -20,15 +20,11 @@ import playerSpritePath from "./sprites/Unnamed Character.png"
 
 import tmxMapaPath from "./maps/mapa.tmx?url"
 
-import logofast from "./images/fastmart.png"
-import logoXYZ from "./images/logoxyz.png"
-import logoABC from "./images/logoabcfinance.png"
-
 
 export const Resources = {
   Sword: new ImageSource(sword),
   Logo: new ImageSource(logo),
-  playerSpriteSheet: new ImageSource(playerSpritePath, {filltering: ImageFiltering.Pixel }),
+  playerSpriteSheet: new ImageSource(playerSpritePath, { filtering: ImageFiltering.Pixel }),
   LogoVertical: new ImageSource (logoVertical),
   Controle: new ImageSource (controle),
   Aldeao: new ImageSource (aldeao),
